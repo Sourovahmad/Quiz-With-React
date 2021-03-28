@@ -1,0 +1,38 @@
+.Homecontainer{
+    position: fixed; 
+    top: 30%;
+    left: 50%;
+    background-color: #18243C;
+    height: 240px;
+    width: 450px;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.contentSection h3{
+ 
+    padding:10px;
+   margin-left: 10px;
+
+}
+.questionSection p{
+  padding:5px;
+}
+
+.leftSection{
+    float:left;
+}
+.rightSection{
+    float:right;
+}
+
+#answearSectionForm {
+   
+    height: auto;
+    width:120px;
+    border-radius: 10%;
+    color: aliceblue;
+    font-weight: 400;
+    margin-top: 20px;
+
+}
