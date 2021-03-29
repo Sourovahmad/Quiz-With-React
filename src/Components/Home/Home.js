@@ -70,8 +70,9 @@ const Home = () => {
 
 
     const [currentQuestion, setCurrentQuestion]  = useState(0);
+    const [showScore, setScore] = useState(false);
 
-     const clickHandlar = () =>{
+     const clickHandlar = (isCorrect) =>{
 
         const nextQuestion = currentQuestion +1 ;
 
@@ -80,12 +81,66 @@ const Home = () => {
             setCurrentQuestion(nextQuestion)
             
         } else{
-            alert("you have reaced the top")
+            setScore(true)
         }
+
+      
        
-        
     
-    }
+    } 
+
+         let OutPut = null;
+        
+        if(showScore === true){
+
+            OutPut = (
+
+                <div className="scoreSection">
+
+                      <p> Your Score is 11  Out of  {Questions.length}
+
+                      </p>
+
+                </div>
+            )
+
+        } else{
+
+            OutPut = (
+
+                <> 
+
+                <div className="col-sm-12 col-md-6 leftSection">
+        
+                <div className="contentSection ">
+
+                    <h3> Question 1/{Questions.length} </h3>
+                </div>
+                <div className="questionSection">
+
+                    <p>{Questions[currentQuestion].questionText}.</p>
+                </div>
+
+            </div>
+
+
+            <div className="col-sm-12 col-md-6 rightSection">
+                <div className="answearSection">
+                    <ul >
+
+                        {Questions[currentQuestion].answerOptions.map((answer)=> <button onClick={clickHandlar(answerOptions.isCorrect)}  className="btn btn-lg btn-primary" id="answearSectionForm">  {answer.answerText} </button>  )}
+                        
+                    </ul>
+                </div>
+
+
+            </div>
+
+            </>
+            )
+        }
+
+     
 
 
 
@@ -97,33 +152,9 @@ const Home = () => {
                 <div className="row">
 
                     <div className="Homecontainer text-light ">
-                        <div className="col-sm-12 col-md-6 leftSection">
+ 
 
-
-                            <div className="contentSection ">
-
-                                <h3> Question 1/{Questions.length} </h3>
-                            </div>
-                            <div className="questionSection">
-
-                                <p>{Questions[currentQuestion].questionText}.</p>
-                            </div>
-
-                        </div>
-
-
-                        <div className="col-sm-12 col-md-6 rightSection">
-                            <div className="answearSection">
-                                <ul >
-
-                                    {Questions[currentQuestion].answerOptions.map((answer)=> <button onClick={clickHandlar}  className="btn btn-lg btn-primary" id="answearSectionForm">  {answer.answerText} </button>  )}
-                                    
-                                </ul>
-                            </div>
-
-
-                        </div>
-
+                        {OutPut}
 
 
                     </div>
