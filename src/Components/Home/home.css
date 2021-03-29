@@ -5,7 +5,7 @@
     background-color: #18243C;
     height: 240px;
     width: 450px;
-    border-radius: 10%;
+    border-radius: 18px;
     overflow: hidden;
 }
 
@@ -26,13 +26,18 @@
     float:right;
 }
 
+.answearSection ul{
+ list-style-type:none;
+}
+
 #answearSectionForm {
    
     height: auto;
     width:120px;
-    border-radius: 10%;
+    border-radius: 10px;
     color: aliceblue;
     font-weight: 400;
     margin-top: 20px;
-
+    font-size: 12px;
 }
+

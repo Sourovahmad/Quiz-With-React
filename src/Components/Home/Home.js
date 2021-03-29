@@ -1,7 +1,13 @@
 import React from 'react';
+import { useState } from 'react';
 import './home.css'
 
+
+
+
 const Home = () => {
+
+    
 
     const Questions = [
         {
@@ -49,12 +55,12 @@ const Home = () => {
         },{
             questionText: "wh do you cry for ?",
             answerOptions: [
-
+                
+                { answerText: "Allah", isCorrect: true },
                 { answerText: "Mother", isCorrect: false },
                 { answerText: "Father", isCorrect: false },
-                { answerText: "Brother", isCorrect: false },
                 { answerText: "Love", isCorrect: false },
-                { answerText: "Allah", isCorrect: true },
+
 
             ]
 
@@ -62,9 +68,30 @@ const Home = () => {
         },
     ]
 
-    console.log(Questions);
+
+    const [currentQuestion, setCurrentQuestion]  = useState(0);
+
+     const clickHandlar = () =>{
+
+        const nextQuestion = currentQuestion +1 ;
+
+        if(nextQuestion < Questions.length){
+
+            setCurrentQuestion(nextQuestion)
+            
+        } else{
+            alert("you have reaced the top")
+        }
+       
+        
+    
+    }
+
+
 
     return (
+
+  
         <>
             <div className="container ">
                 <div className="row">
@@ -79,7 +106,7 @@ const Home = () => {
                             </div>
                             <div className="questionSection">
 
-                                <p>{Questions[0].questionText}.</p>
+                                <p>{Questions[currentQuestion].questionText}.</p>
                             </div>
 
                         </div>
@@ -87,9 +114,9 @@ const Home = () => {
 
                         <div className="col-sm-12 col-md-6 rightSection">
                             <div className="answearSection">
-                                <ul>
+                                <ul >
 
-                                    {Questions[0].answerOptions.map((answer)=><li> <input id="answearSectionForm" type="text" disabled value={answer.answerText} /> </li> )}
+                                    {Questions[currentQuestion].answerOptions.map((answer)=> <button onClick={clickHandlar}  className="btn btn-lg btn-primary" id="answearSectionForm">  {answer.answerText} </button>  )}
                                     
                                 </ul>
                             </div>
