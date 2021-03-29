@@ -68,11 +68,16 @@ const Home = () => {
         },
     ]
 
-
+    const [score, settScore] = useState(0)
     const [currentQuestion, setCurrentQuestion]  = useState(0);
     const [showScore, setScore] = useState(false);
 
      const clickHandlar = (isCorrect) =>{
+
+        if(isCorrect ===  true){
+            alert("this ans is true")
+            settScore( score + 1 )
+        }
 
         const nextQuestion = currentQuestion +1 ;
 
@@ -97,7 +102,7 @@ const Home = () => {
 
                 <div className="scoreSection">
 
-                      <p> Your Score is 11  Out of  {Questions.length}
+                      <p> Your Score is {score}  Out of  {Questions.length}
 
                       </p>
 
@@ -114,7 +119,7 @@ const Home = () => {
         
                 <div className="contentSection ">
 
-                    <h3> Question 1/{Questions.length} </h3>
+                    <h3> Question {currentQuestion + 1}/{Questions.length} </h3>
                 </div>
                 <div className="questionSection">
 
@@ -128,7 +133,7 @@ const Home = () => {
                 <div className="answearSection">
                     <ul >
 
-                        {Questions[currentQuestion].answerOptions.map((answer)=> <button onClick={clickHandlar(answerOptions.isCorrect)}  className="btn btn-lg btn-primary" id="answearSectionForm">  {answer.answerText} </button>  )}
+                        {Questions[currentQuestion].answerOptions.map((answer)=> <button onClick={()=>clickHandlar(answer.isCorrect)}  className="btn btn-lg btn-primary" id="answearSectionForm">  {answer.answerText} </button>  )}
                         
                     </ul>
                 </div>
